@@ -1,0 +1,66 @@
+.cont {
+    margin: 100px;
+    width: auto;
+    padding: 50px;
+    width: fit-content;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px;
+    display: flex;
+    background-color: white;
+  }
+  
+  .cont h1 {
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .cont p {
+    text-align: justify;
+    margin-top: 10px;
+  }
+  
+  .cont button {
+    font-family: "Poppins";
+    padding-inline: 30px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: blue;
+    color: white;
+    font-size: 15px;
+  }
+  .kontak {
+    display: flex;
+    gap: 20px;
+  }
+  .socmed {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: left;
+    margin-top: 40px;
+  }
+  
+  .profil {
+    width: auto;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px;
+    margin-top: 30px;
+    font-family: "Poppins";
+    float: right;
+    margin-left: 40px;
+  }
+  
+  .profil h2 {
+    font-size: 15px;
+    text-align: center;
+    color: black;
+    margin-bottom: 4px;
+  }
+  .profil p {
+    text-align: center;
+  }
+  
