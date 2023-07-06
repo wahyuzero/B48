@@ -16,7 +16,8 @@
                 <img src="assets/banteng.png" />
             </li>
             <li><a href="index.html">Home</a></li>
-            <li><a href="https://wxxsys.blogspot.com/">Blog</a></li>
+            <li><a href="blog-detail.html">Blog</a></li>
+            <li><a href="project.html">My Project</a></li>
         </ul>
         <div class="nav-right">
             <label class="switch">
@@ -30,7 +31,7 @@
     </nav>
     <div class="contact-container">
         <div style="display: flex; text-align: center; margin-top: 1%;"><h1>GET IN TOUCH</h1></div>
-        <form class="form-container" class="form" onsubmit="sendEmail(event)">
+        <form class="form-container" class="form">
             <div>
                 <label>
                     Name
@@ -72,7 +73,7 @@
                 </label>
                 <textarea id="pesanInput" style="box-shadow: 1px 1px 3px;" class="textarea" placeholder="Enter message" required></textarea>
             </div>
-            <button type="submit" class="tombol">Submit</button>
+            <button type="submit" class="tombol"  onclick="sendEmail(event)">Submit</button>
         </form>
     </div>
 

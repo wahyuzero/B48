@@ -8,14 +8,14 @@ function sendEmail(event) {
     var pesan = document.getElementById('pesanInput').value;
     
     if (!nama || !email || !nomer || !subject || !pesan) {
-        alert("Masih ada yang kosong, Tolong di isi ya sayang :)");
+        alert("Masih ada yang kosong, Tolong di isi ya manis :)");
         return;
     }
     
-    var body = "Hai perkenalkan nama saya " + nama + "\n" +
-               "nomor hp saya " + nomer + "\n" +
-               "Saya seorang " + subject + "\n" +
-               "dan berikut pesan saya: " + pesan;
+    var body = `Hai perkenalkan nama saya ${nama}\n` +
+               ` silahkan kontak saya di nomor ${nomer} atau email berikut ${email} , ` +
+               `saya memiliki pesan untuk anda ${pesan}`;
+    const emailReceiver = "wahyuzeros@gmail.com"
     
-    window.location.href = "mailto:wahyuakat@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    window.location.href = `mailto:${emailReceiver}?subject=${subject}&body=${body}`;
 }

@@ -1,0 +1,66 @@
+body {
+    transition: background-color .9s ease-in-out;
+}
+
+.night-mode {
+    transition: .9s ease-in-out;
+    background-color: #292929;
+}
+
+.night-mode nav {
+    transition: .9s ease-out;
+    background-color: #525C61;
+}
+.night-mode nav ul li a {
+    color: #bbb;
+}
+
+.night-mode h1 {
+    color: #fff;
+}
+.night-mode .social-buttons {
+    background-color: #4D5D73;
+    transition: 4s ease-out;
+}
+
+.night-mode .tombol {
+    transition: 1.5s ease-in-out;
+    background-color: #183153;
+    color: #fff;
+}
+.night-mode .cont {
+    transition: .7s ease-out;
+    background-color: #525252;
+    color: #fff;
+}
+.night-mode .contact-container {
+    background-color: #292929;
+    color: #fff;
+}
+.night-mode .input-sel {
+    transition: 2.4s ease-in-out;
+    background-color: #1f1f1f;
+    color: #fff;
+}
+
+.night-mode .contact-container input[type="text"],
+.night-mode .contact-container input[type="email"],
+.night-mode .contact-container input[type="number"],
+.night-mode .contact-container input[type="text"],
+.night-mode .contact-container input[type="option"],
+.night-mode .contact-container input[type="text"],
+.night-mode .contact-container textarea {
+    transition: 2.4s ease-in-out;
+    background-color: #1f1f1f;
+    color: #fff;
+}
+
+.night-mode .contact-container input[type="text"]::placeholder,
+.night-mode .contact-container input[type="email"]::placeholder,
+.night-mode .contact-container input[type="number"]::placeholder,
+.night-mode .contact-container input[type="text"]::placeholder,
+.night-mode .contact-container input[type="option"]::placeholder,
+.night-mode .contact-container input[type="text"]::placeholder,
+.night-mode .contact-container textarea::placeholder {
+    color: #bbb;
+}
