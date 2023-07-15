@@ -1,0 +1,122 @@
+body {
+    transition: background-color .9s ease-in-out;
+}
+
+.night-mode {
+    transition: .9s ease-in-out;
+    background-color: #292929;
+}
+
+.night-mode nav {
+    transition: .9s ease-out;
+    background-color: #525C61;
+}
+.night-mode .card {
+    transition: 1.9s ease-out;
+    background-color: #525C61;
+    color: gainsboro;
+}
+.night-mode .card-content {
+    transition: 5s ease-out;
+    background-color: black;
+    color: gainsboro;
+}
+.night-mode .footer-section {
+    transition: 7s ease-out;
+    background-color: rgb(29, 29, 29);
+    color: gainsboro;
+}
+.night-mode nav ul li a {
+    color: #bbb;
+}
+
+.night-mode h1 {
+    color: #fff;
+}
+.night-mode .social-buttons {
+    background-color: #4D5D73;
+    transition: 4s ease-out;
+}
+
+.night-mode .tombol {
+    transition: 1.5s ease-in-out;
+    background-color: #183153;
+    color: #fff;
+}
+.night-mode .cont {
+    transition: .7s ease-out;
+    background-color: #525252;
+    color: #fff;
+}
+.night-mode .body-content {
+    transition: .7s ease-out;
+    background-color: #525252;
+    color: #fff;
+}
+.night-mode .radio-tile {
+    transition: .7s ease-out;
+    background-color: darkslategrey;
+    color: #fff;
+}
+.night-mode .radio-label {
+    color: #fff;
+}
+.night-mode .drop-container {
+    transition: 1.9s ease-out;
+    background-color: dimgray;
+    color: #fff;
+}
+.night-mode .contact-container {
+    background-color: #292929;
+    color: #fff;
+}
+.night-mode .input-sel {
+    transition: 2.4s ease-in-out;
+    background-color: #1f1f1f;
+    color: #fff;
+}
+.night-mode .input {
+    transition: 2.4s ease-in-out;
+    background-color: #1f1f1f;
+    color: #fff;
+}
+.night-mode .contact-container input[type="text"],
+.night-mode .contact-container input[type="email"],
+.night-mode .contact-container input[type="number"],
+.night-mode .contact-container input[type="text"],
+.night-mode .contact-container input[type="option"],
+.night-mode .contact-container input[type="text"],
+.night-mode .contact-container textarea {
+    transition: 2.4s ease-in-out;
+    background-color: #1f1f1f;
+    color: #fff;
+}
+
+.night-mode .contact-container input[type="text"]::placeholder,
+.night-mode .contact-container input[type="email"]::placeholder,
+.night-mode .contact-container input[type="number"]::placeholder,
+.night-mode .contact-container input[type="text"]::placeholder,
+.night-mode .contact-container input[type="option"]::placeholder,
+.night-mode .contact-container input[type="text"]::placeholder,
+.night-mode .contact-container textarea::placeholder {
+    color: #bbb;
+}
+
+.night-mode .awalpost1 {
+    color: darkgrey;
+}
+.night-mode .article {
+    color: mistyrose;
+    transition: 5s ease-in;
+}
+
+
+.night-mode .testimonials {
+    color: rgb(90, 84, 83);
+    transition: 3s ease-in;
+}
+.night-mode .testimonial {
+    background-color: darkgray;
+    transition: 1.5s ease-in;
+    box-shadow: 0px 0px 10px 5px #525252;
+}

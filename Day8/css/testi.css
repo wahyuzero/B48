@@ -1,0 +1,107 @@
+
+body {
+  margin: 0;
+}
+
+.containers {
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.testimonial {
+  /* width: 20%; */
+  padding: 20px;
+  background-color: #fbfcfd;
+  border-radius: 0.5em;
+  box-shadow: 0px 0px 10px 5px #cccecf;
+  text-align: center;
+}
+
+.testimonial img {
+  width: 280px;
+  height: 200px;
+  object-fit: contain;
+  border-image-width: 10%;
+}
+
+.quote {
+  font-size: 14px;
+  text-shadow: 0px 5px 5px 0px;
+}
+
+.author {
+  font-weight: bold;
+  text-align: right;
+}
+
+.profile-testimonial {
+  width: 100%;
+}
+.container-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rating-btn {
+  margin: 20px;
+  padding: 0px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #fbfcfd;
+  color: white;
+}
+.submit-button {
+  margin-top: 1.6%;
+  background-color: black;
+  align-self: flex-end;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 15px;
+  border-style: none;
+  object-position: right;
+  transition: all 0.2s;
+  cursor: pointer;
+  background: black;
+}
+.submit-button:hover {
+  border: 2px solid #74EAE3;
+  background: #00000000;
+  color: #1C8325;
+}
+
+.submit-button:active {
+  border: 2px solid #66da4300;
+  background: #1C8325;
+  color: black;
+}
+@media only screen and (max-width: 900px) {
+  .testimonial {
+    width: 40%;
+    margin: 0px 5px 5px 5px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .testimonial {
+    width: 70%;
+  }
+}
+
+
+@media only screen and (max-width: 370px) {
+  .testimonial {
+    width: 80%;
+  }
+}

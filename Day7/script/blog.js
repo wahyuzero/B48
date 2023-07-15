@@ -126,7 +126,7 @@ function renderPost(event) {
         <h6 style="opacity: 70%;">${posts[index].author}</h6>
         <h6 style="opacity: 35%;">${posts[index].postAt}</h6>
         <h4>Duration</h4>
-        <h5>${posts[index].durasiPost1} Day,${posts[index].durasiPost2} Month,${posts[index].durasiPost3} Year ago..</h5>
+        <h5>${posts[index].durasiPost1} Day,${posts[index].durasiPost2} Month,${posts[index].durasiPost3} Year</h5>
         <p class="card-description">${posts[index].konten}</p>
         <div class="card-images">
           ${posts[index].nodeJs} ${posts[index].reactJs} ${posts[index].nextJs} ${posts[index].typeScript}

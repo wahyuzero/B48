@@ -1,0 +1,204 @@
+
+nav {
+    display: flex;
+    background-color: #F4F3F3;
+    height: 7vh;
+    width: auto;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    gap: 20px;
+}
+
+nav ul li {
+    list-style-type: none;
+}
+
+nav ul img {
+    width: 50px;
+    height: 30px;
+    margin-top: 7px;
+    object-fit: contain;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+nav ul li a:hover {
+    color: #74EAE3;
+    font-weight: bold;
+}
+
+.nav-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 30px;
+    width: 100%;
+}
+
+.nav-right a {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    padding: 7px;
+    border-radius: 10px;
+    border-style: none;
+}
+
+.switch {
+    margin-right: 3%;
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 64px;
+    height: 34px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #73C0FC;
+    transition: .4s;
+    border-radius: 30px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    left: 2px;
+    bottom: 2px;
+    z-index: 2;
+    background-color: #e8e8e8;
+    transition: .4s;
+  }
+  
+  .sun svg {
+    position: absolute;
+    top: 6px;
+    left: 36px;
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .moon svg {
+    fill: #73C0FC;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* .switch:hover */.sun svg {
+    animation: rotate 15s linear infinite;
+  }
+  
+  @keyframes rotate {
+   
+    0% {
+      transform: rotate(0);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* .switch:hover */.moon svg {
+    animation: tilt 5s linear infinite;
+  }
+  
+  @keyframes tilt {
+   
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    25% {
+      transform: rotate(-10deg);
+    }
+  
+    75% {
+      transform: rotate(10deg);
+    }
+  
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
+  .input:checked + .slider {
+    background-color: #183153;
+  }
+  
+  .input:focus + .slider {
+    box-shadow: 0 0 1px #183153;
+  }
+  
+  .input:checked + .slider:before {
+    transform: translateX(30px);
+  }
+
+
+
+
+.hamburg-container {
+    font-size: 25px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: #DBDBDB;
+    border: solid 0.5vh aliceblue;
+    margin: 3vh 2vh;
+    transition: 1s ease-in-out;
+}
+
+.hamburg-container a {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border: 2px solid white;
+    padding: 5px 0;
+}
+
+.nav-active {
+    background-color: rgb(171, 243, 248);
+}
+
+@media only screen and (max-width: 600px) {
+    .collapse {
+        display: none;
+    }
+    .tombol {
+      margin-bottom: 1vh;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    #hamburg-btn {
+        display: none;
+    }
+}
