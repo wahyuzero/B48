@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog List</title>
+  <!-- Add Bootstrap CSS link -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container mt-4">
+    <h1>Blog List</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Content</th>
+          <th>Author</th>
+          <th>Post Date</th>
+          <th>Post End Date</th>
+          <th>Node.js</th>
+          <th>React.js</th>
+          <th>Next.js</th>
+          <th>TypeScript</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range .Blogs}}
+        <tr>
+          <td>{{.Title}}</td>
+          <td>{{.Content}}</td>
+          <td>{{.Author}}</td>
+          <td>{{.PostDate}}</td>
+          <td>{{.PostEndDate}}</td>
+          <td>{{if .NodeJs}}Yes{{else}}No{{end}}</td>
+          <td>{{if .ReactJs}}Yes{{else}}No{{end}}</td>
+          <td>{{if .NextJs}}Yes{{else}}No{{end}}</td>
+          <td>{{if .TypeScript}}Yes{{else}}No{{end}}</td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Add Bootstrap JS and jQuery scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
