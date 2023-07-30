@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/x-icon" href="assets/banteng.png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-primary-subtle">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img src="assets/banteng.png" class="mg-fluid rounded-start"
+          style="max-width: 25px; object-fit: contain;" /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-success" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-success" href="blogs">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-success" href="project">Add Project</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-success" href="testimonial">Testimonials</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          {{ if .Logged }}
+          <a href="/logout" class="btn btn-danger">Logout</a>
+          {{ else }}
+          <a href="/registration" class="ms-auto p-2">Register</a> <b class="ms-auto p-2">or</b> <a href="/login"
+            class="ms-auto p-2">Login</a>
+          {{ end }}
+          <a href="contact" class="btn btn-outline-primary">Contact Me</a>
+        </form>
+      </div>
+    </div>
+  </nav>
+  {{if .Alert.FlashMessage}}
+  {{if .Alert.FlashStatus}}
+  <div class="alert alert-secondary alert-dismissible fade show d-flex justify-content-center" role="alert">
+    <i>{{.Alert.FlashMessage}}</i>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {{else}}
+  <div class="alert alert-danger alert-dismissible fade show d-flex justify-content-center" role="alert">
+    <i>{{.Alert.FlashMessage}}</i>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {{end}}
+  {{end}}
+  <div class="container mt-3 border border-primary-subtle">
+    <div class="row bg-info bg-opacity-10 border border-opacity-75 border-start-0 rounded-end">
+      <div class="col-sm-8 mt-4">
+        <h1>Hi Welcome to my hut</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique
+          purus orci libero egestas ut. Augue suspendisse blandit lorem massa
+          ipsum, urna, egestas mi, lacinia. Dui fusce etiam libero, lectus amet,
+          risus molestie malesuada. Odio nam purus consectetur euismod congue
+          leo quisque. Turpis amet sollicitudin nunc non in lectus dolor amet.
+          Amet ullamcorper faucibus tincidunt accumsan ac adipiscing arcu. Donec
+          tristique at proin maecenas. Ante elit et iaculis ac sit.
+        </p>
+        <div class="m-lg-2 row row-cols-4 mt-4">
+          <a href="contact" class="btn btn-outline-primary">Contact</a>
+          <a href="assets/cv.pdf" style="text-decoration: none;">Download CV
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25px"
+              height="25px" viewBox="0 0 25 25" version="1.1">
+              <g id="surface1">
+                <path style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;"
+                  d="M 8.203125 4.863281 C 5.917969 5.605469 4.511719 7.636719 4.746094 9.84375 L 4.84375 10.878906 L 4.101562 11.113281 C 0.507812 12.1875 0.488281 17.5 4.0625 18.554688 C 5.175781 18.886719 7.421875 18.730469 7.695312 18.300781 C 8.125 17.636719 7.617188 17.304688 5.976562 17.167969 C 4.609375 17.070312 4.414062 17.011719 3.847656 16.445312 C 3.320312 15.898438 3.222656 15.683594 3.222656 14.84375 C 3.222656 14.023438 3.320312 13.789062 3.828125 13.261719 C 4.335938 12.773438 4.667969 12.617188 5.566406 12.519531 C 7.03125 12.363281 7.226562 12.070312 6.679688 10.898438 C 5.429688 8.320312 7.34375 5.625 10.058594 6.132812 C 11.054688 6.328125 12.265625 7.578125 12.421875 8.59375 C 12.597656 9.726562 13.105469 9.941406 14.023438 9.296875 C 15.019531 8.632812 15.644531 8.515625 16.464844 8.867188 C 17.402344 9.257812 18.007812 10.234375 17.910156 11.152344 C 17.851562 11.542969 17.890625 11.972656 17.96875 12.109375 C 18.066406 12.265625 18.671875 12.441406 19.355469 12.519531 C 20.332031 12.636719 20.664062 12.773438 21.171875 13.261719 C 21.679688 13.789062 21.777344 14.023438 21.777344 14.84375 C 21.777344 15.683594 21.679688 15.898438 21.152344 16.445312 C 20.585938 17.011719 20.390625 17.070312 19.023438 17.167969 C 17.382812 17.304688 16.875 17.636719 17.304688 18.300781 C 17.480469 18.59375 17.8125 18.652344 19.160156 18.652344 C 21.09375 18.652344 21.953125 18.242188 22.8125 16.933594 C 23.535156 15.839844 23.574219 13.945312 22.871094 12.832031 C 22.324219 11.933594 21.269531 11.210938 20.273438 11.035156 C 19.648438 10.917969 19.550781 10.820312 19.433594 10.195312 C 19.042969 7.96875 16.777344 6.601562 14.511719 7.246094 C 13.769531 7.441406 13.574219 7.441406 13.515625 7.246094 C 13.339844 6.71875 12.207031 5.625 11.464844 5.253906 C 10.605469 4.804688 8.964844 4.609375 8.203125 4.863281 Z M 8.203125 4.863281 " />
+                <path style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;"
+                  d="M 11.953125 11.953125 C 11.796875 12.109375 11.71875 13.046875 11.71875 14.921875 L 11.71875 17.65625 L 10.683594 16.640625 C 10.117188 16.074219 9.53125 15.625 9.355469 15.625 C 8.984375 15.625 8.59375 16.015625 8.59375 16.40625 C 8.59375 16.796875 12.109375 20.3125 12.5 20.3125 C 12.890625 20.3125 16.40625 16.777344 16.40625 16.386719 C 16.40625 16.015625 16.015625 15.625 15.644531 15.625 C 15.46875 15.625 14.882812 16.074219 14.316406 16.640625 L 13.28125 17.65625 L 13.28125 14.921875 C 13.28125 12.128906 13.183594 11.71875 12.5 11.71875 C 12.324219 11.71875 12.089844 11.816406 11.953125 11.953125 Z M 11.953125 11.953125 " />
+              </g>
+            </svg>
+          </a>
+        </div>
+        <div class="mt-3 col-3 position-relative py-2 px-4 text-bg-secondary border border-dark-subtle rounded-pill">
+          <a href="https://www.linkedin.com/in/wahyu-zero-a30354210/"><i class="fa-brands fa-linkedin  fa-2x"></i></a>
+          <a href="https://www.instagram.com/dividedwestand5/"><i class="fa-brands fa-instagram  fa-2x"></i></a>
+          <a href="https://web.facebook.com/dabelo7"><i class="fa-brands fa-facebook  fa-2x"></i></a>
+          <a href="https://twitter.com/wahyuzeros"><i class="fa-brands fa-square-twitter  fa-2x"></i></a>
+        </div>
+      </div>
+      <div class="col-sm-4 text-center d-flex card text-bg-light mt-2 mb-3 rounded-4 img-thumbnail"
+        style="max-width: 18rem;">
+        <div class="rounded card-header img-fluid"><img src="assets/gue.jpg"
+            class="card-img-top object-fit-scale border rounded-4" />
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Wahyu Febri Tamtomo</h5>
+          <p class="card-text">Fullstack Developer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-lg-2 d-flex justify-content-center">
+    <h1>My Project</h1>
+  </div>
+  <div class="border border-2 mt-lg-5 d-flex flex-wrap justify-content-around">
+    {{range .Blogs}}
+    <div class="card border-primary mb-3 mt-lg-5" style="max-width: 20rem;">
+      <div class="card-header img-fluid"><img src="{{.Image}}" class="card-img-top img-fluid rounded img-thumbnail"
+          style="max-height: 240; max-width: 280; object-fit: contain; mix-blend-mode: color-burn;" /></div>
+      <div class="card-body">
+        <h5 class="card-title text-black d-flex justify-content-center"><a href="/blog-detail/{{.ID}}"
+            target="_blank">{{.Title}}</a></h5>
+        <h5 class="card-title text-black-50 d-flex justify-content-center">Duration: {{.Duration}}| {{.Author}}</h5>
+        <p class="card-text text-black d-flex justify-content-center">{{.Content}}</p>
+        <p class="d-flex justify-content-between" style="width: 20px; height: 20px;">
+          {{ if .NodeJs }}<img style="margin-left: 15px;" src="/assets/minilogo/nodejs.png">{{ end }}
+          {{ if .ReactJs }}<img style="margin-left: 15px;" src="/assets/minilogo/reactjs.png">{{ end }}
+          {{ if .NextJs }}<img style="margin-left: 15px;" src="/assets/minilogo/nextjs.png">{{ end }}
+          {{ if .TypeScript }}<img style="margin-left: 15px;" src="/assets/minilogo/typescr.png">{{ end }}
+        </p>
+        {{ if $.Logged }}
+        <div class="card-body d-flex justify-content-lg-evenly">
+          <form action="/delete-blog/{{.ID}}" method="post">
+            <button class="card-link btn btn-secondary" formaction="/delete-blog/{{.ID}}">Delete Post</button>
+          </form>
+          <form>
+            <button class="card-link btn btn-secondary" formaction="/edit-blog/{{.ID}}">Edit Post</button>
+          </form>
+        </div>
+        {{ else }}
+         
+        {{end}}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+  <script src="https://kit.fontawesome.com/f9ec9fdc7c.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

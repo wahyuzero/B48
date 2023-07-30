@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/x-icon" href="assets/banteng.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="../css/extra.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary-subtle">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><img src="../assets/banteng.png" class="mg-fluid rounded-start"
+                    style="max-width: 25px; object-fit: contain;" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active text-success" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-success" href="/blogs">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-success" href="/project">Add Project</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-success" href="/testimonial">Testimonials</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <a href="contact" class="btn btn-outline-primary">Contact Me</a>
+                </form>
+            </div>
+        </div>
+    </nav>
+    {{if .FlashMessage}}
+    {{if .FlashStatus}}
+    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+        <i>{{.FlashMessage}}</i>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{else}}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i>{{.FlashMessage}}</i>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{end}}
+    {{end}}
+    <div class="container mt-3 border border-primary-subtle">
+        <div class="container">
+            <h2>Registration</h2>
+            <form action="/register" method="post" autocomplete="off" onsubmit="return validatePass();">
+                <div class="mb-3">
+                    <label for="Username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="Username" name="Username" autofocus required>
+                </div>
+                <div class="mb-3">
+                    <label for="Email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="Email" name="Email" minlength="4" required>
+                </div>
+                <div class="mb-3">
+                    <label for="Password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="Password" name="Password" minlength="4" required>
+                </div>
+                <div class="mb-3">
+                    <label for="ConfirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary mb-lg-4">Register</button>
+                    <i class="ms-auto p-2">Already have account? <a href="/login">Sign In</a></i>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function validatePass() {
+            let password = document.getElementById("Password").value;
+            let confirmPassword = document.getElementById("ConfirmPassword").value;
+
+            if (password != confirmPassword) {
+                alert("Password not math!");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/f9ec9fdc7c.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

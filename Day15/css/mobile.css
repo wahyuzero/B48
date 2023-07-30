@@ -1,0 +1,104 @@
+@media only screen and (max-width: 600px) {
+    .container {
+        display: none;
+    }
+    .tombol {
+        padding: 0px;
+    }
+    .cont {
+        flex-direction: column;
+        margin: 12px;
+        max-width: 30vh;
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0px 0px 40px;
+
+    }
+    .container {
+        height: 15.25em;
+    }
+    .contenss {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .profil {
+        margin-left: auto;
+    }
+    .nav {
+        width: 45vh;
+        height: 3vh;
+    }
+    .card {
+        width: auto;
+    }
+    .article {
+        margin: 2%;
+    }
+    .awalpost1 {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 2vh;
+    }
+
+}
+@media only screen and (max-width: 450px) {
+    .cont {
+        margin: 5vh;
+        max-width: 35vh;
+        padding: auto;
+        font-variant: unicase;
+
+    }
+    .body-content {
+        align-items: stretch;
+        padding: 10px;
+
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .cont {
+    margin: auto;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .contact-container {
+        margin-top: 10%;
+    }
+    .body-content {
+        align-items: stretch;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .contact-container {
+        margin-top: 10%;
+    }
+    .cont {
+        max-width: 33vh;
+        margin: auto;
+        margin-top: 5vh;
+    }
+    .body-content {
+        align-items: stretch;
+    }
+    .radio-tile {
+        width: 70px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .contact-container {
+        margin-top: 30%;
+    }
+    .cont {
+        margin-top: 5vh;
+        max-width: 50vh;
+    }
+    .body-content {
+        align-items: stretch;
+    }
+}
