@@ -91,7 +91,11 @@ func main() {
 		}
 	}
 
-	e.Logger.Fatal(e.Start("localhost:1142"))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "1142"
+	}
+	e.Logger.Fatal(e.Start(":" + port))
 }
 
 // Note : You can remove some fmt.Println function if all progress clear

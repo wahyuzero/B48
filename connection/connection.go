@@ -28,4 +28,35 @@ func DbConnect() {
 		os.Exit(1)
 	}
 	fmt.Println("Database Connected!")
+	initSchema()
+}
+
+func initSchema() {
+	query := `
+	CREATE TABLE IF NOT EXISTS public.db_user (
+		id SERIAL PRIMARY KEY,
+		username VARCHAR(255) NOT NULL,
+		email VARCHAR(255) UNIQUE NOT NULL,
+		password VARCHAR(255) NOT NULL
+	);
+	CREATE TABLE IF NOT EXISTS public.db_posts (
+		id SERIAL PRIMARY KEY,
+		title VARCHAR(255) NOT NULL,
+		content TEXT NOT NULL,
+		author VARCHAR(255) DEFAULT 'Wahyu Zero',
+		start_post DATE NOT NULL,
+		end_post DATE NOT NULL,
+		image VARCHAR(255) DEFAULT 'assets/404.jpg',
+		duration VARCHAR(50),
+		nodejs BOOLEAN DEFAULT false,
+		reactjs BOOLEAN DEFAULT false,
+		nextjs BOOLEAN DEFAULT false,
+		typescript BOOLEAN DEFAULT false
+	);`
+	_, err := Conn.Exec(context.Background(), query)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Warning: could not auto-migrate schema: %v\n", err)
+	} else {
+		fmt.Println("Database Schema Verified & Ready!")
+	}
 }
