@@ -12,18 +12,14 @@
       theme: {
         extend: {
           colors: {
-            canvas: '#040406',
-            surface: '#0d0d12',
+            canvas: '#09090b',
+            surface: '#121215',
+            'surface-elevated': '#18181b',
             emerald: {
               400: '#34d399',
               500: '#10b981',
               600: '#059669',
             }
-          },
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Space Grotesk"', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace']
           }
         }
       }
@@ -31,7 +27,6 @@
   </script>
   <link rel="stylesheet" href="/css/modern.css">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 
   <!-- 3D WebGL & Animation Engines -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -43,20 +38,16 @@
 <body class="bg-canvas text-zinc-100 selection:bg-emerald-500/20 selection:text-emerald-300 relative min-h-screen">
   <div id="canvas3d-bg"></div>
 
-
-  <div class="noise-layer"></div>
-  <div class="ambient-glow top-0 left-1/2 -translate-x-1/2"></div>
-
-  <!-- Floating Glass Navbar -->
+  <!-- Floating Navbar -->
   <header class="fixed top-5 inset-x-0 z-50 flex justify-center px-4">
-    <nav class="glass-panel rounded-full px-5 py-2.5 flex items-center gap-6 shadow-2xl shadow-black/80 max-w-4xl w-full justify-between border border-white/10">
+    <nav class="glass-panel rounded-full px-5 py-2.5 flex items-center gap-6 shadow-2xl shadow-black/60 max-w-4xl w-full justify-between border border-white/10">
       <a href="/" class="flex items-center gap-3">
         <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 p-[1px]">
           <div class="w-full h-full bg-zinc-950 rounded-full flex items-center justify-center font-bold text-xs text-emerald-400">
             WZ
           </div>
         </div>
-        <span class="text-sm font-semibold tracking-tight text-zinc-100 font-display">Wahyu Zero</span>
+        <span class="text-sm font-semibold tracking-tight text-zinc-100">Wahyu Zero</span>
       </a>
 
       <div class="hidden md:flex items-center gap-1 text-xs font-medium text-zinc-400">
@@ -74,59 +65,56 @@
     </nav>
   </header>
 
-  <main class="max-w-xl mx-auto px-6 pt-36 pb-24 relative z-10">
-    <div class="double-bezel spotlight-card">
-      <div class="double-bezel-inner p-8 sm:p-10">
-        <div class="text-center mb-8">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mx-auto mb-4 shadow-lg shadow-emerald-500/10">
-            <i class="ph ph-envelope-open"></i>
-          </div>
-          <h1 class="text-3xl font-extrabold text-zinc-100 tracking-tight font-display">Let's Work Together</h1>
-          <p class="text-zinc-400 text-xs mt-2">Have a project, engineering role, or technical collaboration? Send a message directly.</p>
+  <main class="max-w-xl mx-auto px-6 pt-32 pb-24 relative z-10">
+    <div class="tilt-card glass-panel rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl">
+      <div class="text-center mb-8">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mx-auto mb-4">
+          <i class="ph ph-envelope-open"></i>
+        </div>
+        <h1 class="text-3xl font-extrabold text-zinc-100 tracking-tight">Let's Work Together</h1>
+        <p class="text-zinc-400 text-xs mt-2">Have a project, job inquiry, or question? Send a message directly.</p>
+      </div>
+
+      <form onsubmit="handleContact(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Your Name</label>
+          <input type="text" id="name" required placeholder="John Doe" class="w-full bg-[#121215] text-zinc-100 placeholder-zinc-500 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all" />
         </div>
 
-        <form onsubmit="handleContact(event)" class="space-y-4">
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Your Name</label>
-            <input type="text" id="name" required placeholder="John Doe" class="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500/50 transition-colors" />
-          </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Email Address</label>
+          <input type="email" id="email" required placeholder="john@example.com" class="w-full bg-[#121215] text-zinc-100 placeholder-zinc-500 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all" />
+        </div>
 
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Email Address</label>
-            <input type="email" id="email" required placeholder="john@example.com" class="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500/50 transition-colors" />
-          </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Phone / WhatsApp</label>
+          <input type="tel" id="phone" placeholder="+62 812-3456-7890" class="w-full bg-[#121215] text-zinc-100 placeholder-zinc-500 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all" />
+        </div>
 
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Phone / WhatsApp</label>
-            <input type="tel" id="phone" placeholder="+62 812-3456-7890" class="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500/50 transition-colors" />
-          </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Topic / Subject</label>
+          <select id="subject" class="w-full bg-[#121215] text-zinc-100 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all cursor-pointer">
+            <option value="Freelance Project" class="bg-zinc-900 text-zinc-100">Freelance / Contract Project</option>
+            <option value="Full-time Opportunity" class="bg-zinc-900 text-zinc-100">Full-time Engineering Role</option>
+            <option value="Technical Collaboration" class="bg-zinc-900 text-zinc-100">Technical Collaboration</option>
+            <option value="Other Inquiry" class="bg-zinc-900 text-zinc-100">Other Inquiry</option>
+          </select>
+        </div>
 
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Topic / Subject</label>
-            <select id="subject" class="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-zinc-100 cursor-pointer focus:outline-none focus:border-emerald-500/50 transition-colors">
-              <option value="Freelance Project">Freelance / Contract Project</option>
-              <option value="Full-time Opportunity">Full-time Engineering Role</option>
-              <option value="Technical Collaboration">Technical Collaboration</option>
-              <option value="Other Inquiry">Other Inquiry</option>
-            </select>
-          </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Message</label>
+          <textarea id="message" rows="4" required placeholder="Write your message here..." class="w-full bg-[#121215] text-zinc-100 placeholder-zinc-500 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all resize-none"></textarea>
+        </div>
 
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Message</label>
-            <textarea id="message" rows="4" required placeholder="Write your message here..." class="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500/50 transition-colors resize-none"></textarea>
-          </div>
-
-          <div class="pt-2">
-            <button type="submit" class="btn-primary w-full !py-3 !text-sm">
-              <i class="ph ph-paper-plane-tilt text-base"></i> Send Direct Email
-            </button>
-          </div>
-        </form>
-      </div>
+        <div class="pt-2">
+          <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-sm shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer btn-magnetic">
+            <i class="ph ph-paper-plane-tilt text-base"></i> Send Message
+          </button>
+        </div>
+      </form>
     </div>
   </main>
 
-  <script src="/script/modern.js"></script>
   <script>
     function handleContact(e) {
       e.preventDefault();

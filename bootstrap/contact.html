@@ -38,9 +38,6 @@
 <body class="bg-canvas text-zinc-100 selection:bg-emerald-500/20 selection:text-emerald-300 relative min-h-screen">
   <div id="canvas3d-bg"></div>
 
-
-  <div class="ambient-glow top-0 left-1/2 -translate-x-1/2"></div>
-
   <!-- Floating Navbar -->
   <header class="fixed top-5 inset-x-0 z-50 flex justify-center px-4">
     <nav class="glass-panel rounded-full px-5 py-2.5 flex items-center gap-6 shadow-2xl shadow-black/60 max-w-4xl w-full justify-between border border-white/10">
@@ -69,7 +66,7 @@
   </header>
 
   <main class="max-w-xl mx-auto px-6 pt-32 pb-24 relative z-10">
-    <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl">
+    <div class="tilt-card glass-panel rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl">
       <div class="text-center mb-8">
         <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mx-auto mb-4">
           <i class="ph ph-envelope-open"></i>
@@ -81,36 +78,36 @@
       <form onsubmit="handleContact(event)" class="space-y-4">
         <div>
           <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Your Name</label>
-          <input type="text" id="name" required placeholder="John Doe" class="form-input" />
+          <input type="text" id="name" required placeholder="John Doe" class="w-full bg-[#121215] text-zinc-100 placeholder-zinc-500 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all" />
         </div>
 
         <div>
           <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Email Address</label>
-          <input type="email" id="email" required placeholder="john@example.com" class="form-input" />
+          <input type="email" id="email" required placeholder="john@example.com" class="w-full bg-[#121215] text-zinc-100 placeholder-zinc-500 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all" />
         </div>
 
         <div>
           <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Phone / WhatsApp</label>
-          <input type="tel" id="phone" placeholder="+62 812-3456-7890" class="form-input" />
+          <input type="tel" id="phone" placeholder="+62 812-3456-7890" class="w-full bg-[#121215] text-zinc-100 placeholder-zinc-500 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all" />
         </div>
 
         <div>
           <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Topic / Subject</label>
-          <select id="subject" class="form-input cursor-pointer">
-            <option value="Freelance Project">Freelance / Contract Project</option>
-            <option value="Full-time Opportunity">Full-time Engineering Role</option>
-            <option value="Technical Collaboration">Technical Collaboration</option>
-            <option value="Other Inquiry">Other Inquiry</option>
+          <select id="subject" class="w-full bg-[#121215] text-zinc-100 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all cursor-pointer">
+            <option value="Freelance Project" class="bg-zinc-900 text-zinc-100">Freelance / Contract Project</option>
+            <option value="Full-time Opportunity" class="bg-zinc-900 text-zinc-100">Full-time Engineering Role</option>
+            <option value="Technical Collaboration" class="bg-zinc-900 text-zinc-100">Technical Collaboration</option>
+            <option value="Other Inquiry" class="bg-zinc-900 text-zinc-100">Other Inquiry</option>
           </select>
         </div>
 
         <div>
           <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Message</label>
-          <textarea id="message" rows="4" required placeholder="Write your message here..." class="form-input resize-none"></textarea>
+          <textarea id="message" rows="4" required placeholder="Write your message here..." class="w-full bg-[#121215] text-zinc-100 placeholder-zinc-500 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all resize-none"></textarea>
         </div>
 
         <div class="pt-2">
-          <button type="submit" class="btn-primary w-full !py-3 !text-sm">
+          <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-sm shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer btn-magnetic">
             <i class="ph ph-paper-plane-tilt text-base"></i> Send Message
           </button>
         </div>
