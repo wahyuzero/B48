@@ -28,8 +28,17 @@
   </script>
   <link rel="stylesheet" href="/css/modern.css">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- 3D WebGL & Animation Engines -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <script src="/script/interactive-3d.js" defer></script>
 </head>
 <body class="bg-canvas text-zinc-100 selection:bg-emerald-500/20 selection:text-emerald-300 relative min-h-screen">
+  <div id="canvas3d-bg"></div>
+
 
   <!-- Ambient Glow -->
   <div class="ambient-glow top-0 left-1/4 -translate-x-1/2"></div>
@@ -71,7 +80,7 @@
         </a>
         {{ else }}
         <a href="/login" class="text-xs font-medium text-zinc-300 hover:text-white px-3 py-1.5 transition-colors">Login</a>
-        <a href="/registration" class="btn-primary text-xs !py-1.5 !px-3.5 !rounded-lg">Register</a>
+        <a href="/registration" class="btn-primary btn-magnetic text-xs !py-1.5 !px-3.5 !rounded-lg">Register</a>
         {{ end }}
       </div>
     </nav>
@@ -80,7 +89,7 @@
   <main class="max-w-6xl mx-auto px-6 pt-32 pb-24 relative z-10">
 
     <!-- HERO SECTION -->
-    <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-10 lg:py-16">
+    <section class="reveal-section grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-10 lg:py-16">
       
       <!-- Left Column: Pitch & Story -->
       <div class="lg:col-span-7 flex flex-col gap-6">
@@ -98,10 +107,10 @@
 
         <!-- CTA Buttons -->
         <div class="flex flex-wrap items-center gap-4 pt-2">
-          <a href="/contact" class="btn-primary">
+          <a href="/contact" class="btn-primary btn-magnetic">
             <i class="ph ph-paper-plane-tilt text-base"></i> Let's Connect
           </a>
-          <a href="/assets/cv.pdf" target="_blank" class="btn-secondary">
+          <a href="/assets/cv.pdf" target="_blank" class="btn-secondary btn-magnetic">
             <i class="ph ph-download-simple text-base"></i> Download CV
           </a>
         </div>
@@ -126,9 +135,7 @@
           <div class="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
           
           <div class="relative flex flex-col items-center text-center">
-            <div class="relative w-36 h-36 rounded-2xl overflow-hidden mb-6 border-2 border-white/10 shadow-2xl">
-              <img src="/assets/dp.png" alt="Wahyu Febri Tamtomo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            </div>
+            <div id="hero-3d-canvas" class="w-32 h-32 mx-auto mb-3 cursor-grab"></div>
 
             <h2 class="text-xl font-bold text-zinc-100 tracking-tight">Wahyu Febri Tamtomo</h2>
             <p class="text-xs font-mono text-emerald-400 mt-1 mb-4">@wahyuzero · Backend & Go Developer</p>
@@ -152,7 +159,7 @@
     </section>
 
     <!-- TECH STACK STRIP -->
-    <section class="py-12 border-y border-white/5 my-12">
+    <section class="reveal-section tech-strip-section py-12 border-y border-white/5 my-12">
       <p class="text-center text-xs font-mono uppercase tracking-widest text-zinc-500 mb-8">Core Technologies & Architecture</p>
       <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 text-center">
         <div class="glass-panel p-4 rounded-xl flex flex-col items-center gap-2 hover:border-emerald-500/40 transition-colors">
@@ -191,13 +198,13 @@
     </section>
 
     <!-- FEATURED PROJECTS / BENTO GRID -->
-    <section class="py-12">
+    <section class="reveal-section py-12">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
         <div>
           <span class="text-xs font-mono text-emerald-400 uppercase tracking-wider">Portfolio & Writings</span>
           <h2 class="text-3xl font-extrabold text-zinc-100 tracking-tight mt-1">Featured Works</h2>
         </div>
-        <a href="/project" class="btn-primary !text-xs !py-2 !px-4">
+        <a href="/project" class="btn-primary btn-magnetic !text-xs !py-2 !px-4">
           <i class="ph ph-plus text-sm"></i> Add New Project
         </a>
       </div>
@@ -205,7 +212,7 @@
       <!-- Project Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {{range .Blogs}}
-        <article class="glass-panel rounded-2xl overflow-hidden flex flex-col border border-white/10 group glass-panel-hover">
+        <article class="tilt-card glass-panel rounded-2xl overflow-hidden flex flex-col border border-white/10 group glass-panel-hover">
           <!-- Thumbnail Container -->
           <div class="relative aspect-video w-full overflow-hidden bg-zinc-900 border-b border-white/5">
             <img src="/{{.Image}}" alt="{{.Title}}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='/assets/404.jpg'" />
@@ -251,7 +258,7 @@
         <div class="col-span-full glass-panel rounded-2xl p-12 text-center">
           <i class="ph ph-folder-open text-4xl text-zinc-600 mb-3"></i>
           <p class="text-zinc-400 text-sm">No projects published yet.</p>
-          <a href="/project" class="btn-primary mt-4 text-xs !py-2 !px-4">Create the first project</a>
+          <a href="/project" class="btn-primary btn-magnetic mt-4 text-xs !py-2 !px-4">Create the first project</a>
         </div>
         {{end}}
       </div>

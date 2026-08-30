@@ -27,8 +27,17 @@
   </script>
   <link rel="stylesheet" href="/css/modern.css">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- 3D WebGL & Animation Engines -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <script src="/script/interactive-3d.js" defer></script>
 </head>
 <body class="bg-canvas text-zinc-100 selection:bg-emerald-500/20 selection:text-emerald-300 relative min-h-screen">
+  <div id="canvas3d-bg"></div>
+
 
   <div class="ambient-glow top-0 left-1/2 -translate-x-1/2"></div>
 
