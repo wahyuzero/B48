@@ -2,6 +2,12 @@
 
 > *"The very first repository where my coding journey began in **DumbWays Batch 48 (B48)** — now resurrected, cleaned up, and consolidated into a unified, full-fledged Fullstack Web Application."*
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Render.com-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://b48.onrender.com)
+[![Go Report](https://img.shields.io/badge/Go-1.20+-00ADD8?style=for-the-badge&logo=go&logoColor=white)](https://go.dev)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org)
+
+🌐 **Live Website**: [https://b48.onrender.com](https://b48.onrender.com)
+
 ---
 
 ## 📜 The Story & Revival
