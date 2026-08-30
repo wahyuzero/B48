@@ -1,119 +1,227 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en" class="dark">
 <head>
-  <title>Add Project</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonials & Reviews — Wahyu Febri Tamtomo</title>
   <link rel="icon" type="image/x-icon" href="/assets/dp.png" />
-  <link rel="stylesheet" href="/css/all.css" />
-  <link rel="stylesheet" href="/css/nav.css" />
-  <link rel="stylesheet" href="/css/contact.css" />
-  <link rel="stylesheet" href="/css/night.css" />
-  <link rel="stylesheet" href="/css/testi.css" />
-  <link rel="stylesheet" href="/css/mobile.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#09090b',
+            surface: '#121215',
+            'surface-elevated': '#18181b',
+            emerald: {
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/css/modern.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
+<body class="bg-canvas text-zinc-100 selection:bg-emerald-500/20 selection:text-emerald-300 relative min-h-screen">
 
-<body>
-  <script src="/script/nav.js" type="text/javascript"></script>
-  <script src="/script/night.js" type="text/javascript"></script>
-  <nav style="font-size: medium;">
-    <ul>
-      <li><img src="/assets/banteng.png" /></li>
-      <li class="collapse"><a href="/">Home</a></li>
-      <li class="collapse"><a href="/blogs">Blog</a></li>
-      <li class="collapse"><a href="/project" style="font-size: small;">My Project</a></li>
-      <li class="collapse"><a href="/testimonial">Testimonials</a></li>
-    </ul>
-    <div class="nav-right" id="hamburg-btn">
-      <button class="switch tombol" onclick="openHamburg()">
-        Menu
-      </button>
-    </div>
-    <div class="nav-right">
-      <label class="switch">
-        <span class="sun"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <g fill="#ffd43b">
-              <circle r="5" cy="12" cx="12"></circle>
-              <path
-                d="m21 13h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm-17 0h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm13.66-5.66a1 1 0 0 1 -.66-.29 1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1 -.75.29zm-12.02 12.02a1 1 0 0 1 -.71-.29 1 1 0 0 1 0-1.41l.71-.66a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1 -.7.24zm6.36-14.36a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm0 17a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm-5.66-14.66a1 1 0 0 1 -.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.29zm12.02 12.02a1 1 0 0 1 -.7-.29l-.66-.71a1 1 0 0 1 1.36-1.36l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.24z">
-              </path>
-            </g>
-          </svg></span>
-        <span class="moon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-            <path
-              d="m223.5 32c-123.5 0-223.5 100.3-223.5 224s100 224 223.5 224c60.6 0 115.5-24.2 155.8-63.4 5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6-96.9 0-175.5-78.8-175.5-176 0-65.8 36-123.1 89.3-153.3 6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z">
-            </path>
-          </svg></span>
-        <input type="checkbox" class="input" onclick="toggleNightMode()">
-        <span class="slider"></span>
-      </label>
-      <a href="/contact" class="tombol collapse" style="margin-bottom: 0.5%;">
-        Contact Me
-      </a>
-    </div>
-    {{ if .Logged }}
-    <a href="/logout" class="tombol">Logout</a>
-    {{ else }}
-    <a href="/registration">Register</a> <b>or</b> <a href="/login">Login</a>
-    {{ end }}
-  </nav>
-  <div class="hamburg-container" id="hamburg-container">
-    <a href="/" class="tombol">Home</a>
-    <a href="/blogs" class="tombol">Blog</a>
-    <a href="/project" class="tombol">My Project</a>
-    <a href="/contact" class="tombol">Contact</a>
-    <a href="/testimonial" class="tombol">Testimonials</a>
-    <a href="/logout" class="tombol">Logout</a>
-  </div>
-  <div class="body-content">
-    <div class="containers">
-      <p class="typing">
-      <h1>Testimonials</h1>
-      </p>
-      <div>
-        <h3>Sort by :</h3>
-        <div class="rating">
-          <button class="rating-btn submit-button" onclick="allTestimoni()">
-            All <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
-              <polygon fill="#FFD700"
-                points="5 0 6.072 2.611 8.777 3.361 7.182 5.427 7.646 8.139 5 6.573 2.354 8.139 2.818 5.427 1.223 3.361 3.928 2.611" />
-            </svg>
-          </button>
-          <button class="rating-btn submit-button" onclick="filterTestmoni(1)">
-            1 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
-              <polygon fill="#FFD700"
-                points="5 0 6.072 2.611 8.777 3.361 7.182 5.427 7.646 8.139 5 6.573 2.354 8.139 2.818 5.427 1.223 3.361 3.928 2.611" />
-            </svg>
-          </button>
-          <button class="rating-btn submit-button" onclick="filterTestmoni(2)">
-            2 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
-              <polygon fill="#FFD700"
-                points="5 0 6.072 2.611 8.777 3.361 7.182 5.427 7.646 8.139 5 6.573 2.354 8.139 2.818 5.427 1.223 3.361 3.928 2.611" />
-            </svg>
-          </button>
-          <button class="rating-btn submit-button" onclick="filterTestmoni(3)">
-            3 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
-              <polygon fill="#FFD700"
-                points="5 0 6.072 2.611 8.777 3.361 7.182 5.427 7.646 8.139 5 6.573 2.354 8.139 2.818 5.427 1.223 3.361 3.928 2.611" />
-            </svg>
-          </button>
-          <button class="rating-btn submit-button" onclick="filterTestmoni(4)">
-            4 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
-              <polygon fill="#FFD700"
-                points="5 0 6.072 2.611 8.777 3.361 7.182 5.427 7.646 8.139 5 6.573 2.354 8.139 2.818 5.427 1.223 3.361 3.928 2.611" />
-            </svg>
-          </button>
-          <button class="rating-btn submit-button" onclick="filterTestmoni(5)">
-            5 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
-              <polygon fill="#FFD700"
-                points="5 0 6.072 2.611 8.777 3.361 7.182 5.427 7.646 8.139 5 6.573 2.354 8.139 2.818 5.427 1.223 3.361 3.928 2.611" />
-            </svg>
-          </button>
+  <div class="ambient-glow top-0 left-1/2 -translate-x-1/2"></div>
+
+  <!-- Floating Navbar -->
+  <header class="fixed top-5 inset-x-0 z-50 flex justify-center px-4">
+    <nav class="glass-panel rounded-full px-5 py-2.5 flex items-center gap-6 shadow-2xl shadow-black/60 max-w-4xl w-full justify-between border border-white/10">
+      <a href="/" class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 p-[1px]">
+          <div class="w-full h-full bg-zinc-950 rounded-full flex items-center justify-center font-bold text-xs text-emerald-400">
+            WZ
+          </div>
         </div>
-      </div>
-      <div class="testimonials" id="testimoni">
-      </div>
-      <script src="/script/ajax.js" type="text/javascript"></script>
-</body>
+        <span class="text-sm font-semibold tracking-tight text-zinc-100">Wahyu Zero</span>
+      </a>
 
+      <div class="hidden md:flex items-center gap-1 text-xs font-medium text-zinc-400">
+        <a href="/" class="px-3.5 py-1.5 rounded-full hover:text-zinc-100 hover:bg-white/5 transition-colors">Home</a>
+        <a href="/blogs" class="px-3.5 py-1.5 rounded-full hover:text-zinc-100 hover:bg-white/5 transition-colors">Projects</a>
+        <a href="/testimonial" class="px-3.5 py-1.5 rounded-full text-zinc-100 bg-white/5 border border-white/10 transition-colors">Testimonials</a>
+        <a href="/contact" class="px-3.5 py-1.5 rounded-full hover:text-zinc-100 hover:bg-white/5 transition-colors">Contact</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="/contact" class="btn-primary text-xs !py-1.5 !px-3.5 !rounded-lg">
+          Contact Me
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 pt-32 pb-24 relative z-10">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-mono text-emerald-400 uppercase tracking-wider">Social Proof & Heritage</span>
+      <h1 class="text-4xl font-extrabold text-zinc-100 tracking-tight mt-1">What Industry Leaders Say</h1>
+      <p class="text-zinc-400 text-sm mt-3 leading-relaxed">
+        Authentic peer reviews and humorous tech icon testimonials preserved from the original bootcamp milestone.
+      </p>
+
+      <!-- Rating Filter Pills -->
+      <div class="flex flex-wrap justify-center items-center gap-2 mt-8" id="filterContainer">
+        <button onclick="filterRating(0)" class="filter-btn active px-4 py-2 rounded-xl text-xs font-semibold glass-panel border border-white/10 text-zinc-100 transition-all hover:border-emerald-500/50">
+          All Reviews
+        </button>
+        <button onclick="filterRating(5)" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel border border-white/10 text-zinc-400 transition-all hover:text-white hover:border-emerald-500/50 flex items-center gap-1">
+          5 <i class="ph-fill ph-star text-amber-400"></i>
+        </button>
+        <button onclick="filterRating(4)" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel border border-white/10 text-zinc-400 transition-all hover:text-white hover:border-emerald-500/50 flex items-center gap-1">
+          4 <i class="ph-fill ph-star text-amber-400"></i>
+        </button>
+        <button onclick="filterRating(2)" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel border border-white/10 text-zinc-400 transition-all hover:text-white hover:border-emerald-500/50 flex items-center gap-1">
+          2 <i class="ph-fill ph-star text-amber-400"></i>
+        </button>
+        <button onclick="filterRating(1)" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel border border-white/10 text-zinc-400 transition-all hover:text-white hover:border-emerald-500/50 flex items-center gap-1">
+          1 <i class="ph-fill ph-star text-amber-400"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Review Grid -->
+    <div id="testimonialGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="col-span-full text-center py-12 text-zinc-500">
+        <i class="ph ph-spinner animate-spin text-3xl mb-2 text-emerald-400"></i>
+        <p class="text-xs">Loading testimonials...</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-white/5 py-12 text-center text-xs text-zinc-500">
+    <p>© 2026 Wahyu Febri Tamtomo · B48 Personal Web</p>
+  </footer>
+
+  <script>
+    const fallbackReviews = [
+      {
+        usr: "Mas Eoln",
+        quote: "Mantap sir ngga kaya Threads",
+        img: "https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg",
+        rate: 5
+      },
+      {
+        usr: "Mas Zuck",
+        quote: "Keren sekali gan, btw mas eoln gelut yok?",
+        img: "https://upload.wikimedia.org/wikipedia/commons/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg",
+        rate: 5
+      },
+      {
+        usr: "Jefry Besos",
+        quote: "Lumayan menarik",
+        img: "https://upload.wikimedia.org/wikipedia/commons/9/91/Jeff_Bezos%27_iconic_laugh_crop.jpg",
+        rate: 4
+      },
+      {
+        usr: "Satosi Motonaka",
+        quote: "Mungkin bisa ditambah fitur blockchain dan Go concurrency",
+        img: "https://upload.wikimedia.org/wikipedia/commons/7/77/Satoshi_Nakamoto.jpg",
+        rate: 4
+      },
+      {
+        comp: "Morgan JP",
+        quote: "Kelihatannya anda kekurangan investor, mari kita bicarakan",
+        img: "https://upload.wikimedia.org/wikipedia/commons/4/41/JohnPierpontMorgan.png",
+        rate: 2
+      },
+      {
+        comp: "Mikroskop",
+        quote: "Nggak rekomen, kelihatan masih pemula tapi kodenya rapi",
+        img: "https://www.nicepng.com/png/full/48-482252_spotify-logo-png-transparent.png",
+        rate: 1
+      }
+    ];
+
+    let allData = [];
+
+    async function loadTestimonials() {
+      try {
+        const res = await fetch("https://api.npoint.io/de53732dac47e9444e92");
+        if (res.ok) {
+          allData = await res.json();
+        } else {
+          allData = fallbackReviews;
+        }
+      } catch (err) {
+        allData = fallbackReviews;
+      }
+      renderCards(allData);
+    }
+
+    function renderCards(data) {
+      const container = document.getElementById("testimonialGrid");
+      if (!data || data.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full text-center py-12 text-zinc-500">
+            <p class="text-sm">No reviews found for this rating.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = data.map(item => {
+        const name = item.usr || item.comp || "Anonymous";
+        const isComp = !!item.comp;
+        const stars = Array(item.rate).fill('<i class="ph-fill ph-star text-amber-400 text-sm"></i>').join('');
+        
+        return `
+          <div class="glass-panel rounded-2xl p-6 border border-white/10 flex flex-col justify-between glass-panel-hover">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-4">
+                <div class="flex items-center gap-3">
+                  <img src="${item.img}" alt="${name}" class="w-11 h-11 rounded-full object-cover border border-white/10 shadow-md" onerror="this.src='/assets/dp.png'" />
+                  <div>
+                    <h3 class="text-sm font-bold text-zinc-100 flex items-center gap-1.5">
+                      ${name}
+                      <i class="ph-fill ph-seal-check text-emerald-400 text-xs"></i>
+                    </h3>
+                    <p class="text-[11px] font-mono ${isComp ? 'text-blue-400' : 'text-zinc-500'}">${isComp ? 'Enterprise Client' : 'Verified Tech Leader'}</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-0.5">
+                  ${stars}
+                </div>
+              </div>
+              <p class="text-xs text-zinc-300 leading-relaxed italic">
+                "${item.quote}"
+              </p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 flex items-center justify-between text-[11px] text-zinc-500 font-mono">
+              <span>Rating: ${item.rate}.0 / 5.0</span>
+              <span class="text-emerald-400">Verified</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterRating(rating) {
+      // Update button active state
+      const buttons = document.querySelectorAll(".filter-btn");
+      buttons.forEach(btn => {
+        btn.classList.remove("!border-emerald-500", "!text-emerald-400", "!bg-emerald-500/10");
+      });
+      event.currentTarget.classList.add("!border-emerald-500", "!text-emerald-400", "!bg-emerald-500/10");
+
+      if (rating === 0) {
+        renderCards(allData);
+      } else {
+        const filtered = allData.filter(i => i.rate === rating);
+        renderCards(filtered);
+      }
+    }
+
+    loadTestimonials();
+  </script>
+
+</body>
 </html>

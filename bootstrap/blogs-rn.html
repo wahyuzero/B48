@@ -1,105 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="dark">
 <head>
-  <link rel="icon" type="image/x-icon" href="/assets/banteng.png" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Project</title>
-  <link rel="stylesheet" href="/css/extra.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <title>Projects & Articles — Wahyu Febri Tamtomo</title>
+  <link rel="icon" type="image/x-icon" href="/assets/dp.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#09090b',
+            surface: '#121215',
+            'surface-elevated': '#18181b',
+            'surface-hover': '#27272a',
+            emerald: {
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/css/modern.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
+<body class="bg-canvas text-zinc-100 selection:bg-emerald-500/20 selection:text-emerald-300 relative min-h-screen">
 
-<body>
-  <nav class="navbar navbar-expand-lg bg-primary-subtle">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/"><img src="/assets/banteng.png" class="mg-fluid rounded-start"
-          style="max-width: 25px; object-fit: contain;" /></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active text-success" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active text-success" href="/blogs">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-success" href="/project">Add Project</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-success" href="/testimonial">Testimonials</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          {{ if .Logged }}
-          <a href="/logout" class="btn btn-danger">Logout</a>
-          {{ else }}
-          <a href="/registration" class="ms-auto p-2">Register</a> <b class="ms-auto p-2">or</b> <a href="/login"
-            class="ms-auto p-2">Login</a>
-          {{ end }}
-          <a href="/contact" class="btn btn-outline-primary">Contact Me</a>
-        </form>
+  <div class="ambient-glow top-0 right-1/4 translate-x-1/2"></div>
+
+  <!-- Floating Navbar -->
+  <header class="fixed top-5 inset-x-0 z-50 flex justify-center px-4">
+    <nav class="glass-panel rounded-full px-5 py-2.5 flex items-center gap-6 shadow-2xl shadow-black/60 max-w-4xl w-full justify-between border border-white/10">
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 p-[1px]">
+          <div class="w-full h-full bg-zinc-950 rounded-full flex items-center justify-center font-bold text-xs text-emerald-400 group-hover:scale-105 transition-transform">
+            WZ
+          </div>
+        </div>
+        <span class="text-sm font-semibold tracking-tight text-zinc-100">Wahyu Zero</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-1 text-xs font-medium text-zinc-400">
+        <a href="/" class="px-3.5 py-1.5 rounded-full hover:text-zinc-100 hover:bg-white/5 transition-colors">Home</a>
+        <a href="/blogs" class="px-3.5 py-1.5 rounded-full text-zinc-100 bg-white/5 border border-white/10 transition-colors">Projects</a>
+        <a href="/testimonial" class="px-3.5 py-1.5 rounded-full hover:text-zinc-100 hover:bg-white/5 transition-colors">Testimonials</a>
+        <a href="/contact" class="px-3.5 py-1.5 rounded-full hover:text-zinc-100 hover:bg-white/5 transition-colors">Contact</a>
       </div>
+
+      <div class="flex items-center gap-2.5">
+        <a href="/project" class="btn-primary text-xs !py-1.5 !px-3.5 !rounded-lg">
+          <i class="ph ph-plus"></i> New Project
+        </a>
+        {{ if .Logged }}
+        <a href="/logout" class="text-xs font-medium text-red-400 hover:text-red-300 px-3 py-1.5 rounded-lg border border-red-500/20 bg-red-500/10 transition-all">Logout</a>
+        {{ else }}
+        <a href="/login" class="text-xs font-medium text-zinc-300 hover:text-white px-3 py-1.5">Login</a>
+        {{ end }}
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 pt-32 pb-24 relative z-10">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+      <div>
+        <span class="text-xs font-mono text-emerald-400 uppercase tracking-wider">Catalog</span>
+        <h1 class="text-4xl font-extrabold text-zinc-100 tracking-tight mt-1">All Projects & Blogs</h1>
+        <p class="text-zinc-400 text-sm mt-2">A curated collection of fullstack applications, microservices, and technical experiments.</p>
+      </div>
+      <a href="/project" class="btn-primary text-xs !py-2.5 !px-5 w-fit">
+        <i class="ph ph-plus-circle text-base"></i> Add My Project
+      </a>
     </div>
-  </nav>
-  <div class="blog">
-    <div style="margin-top: 50px; text-align:end; margin-right: 120px;">
-      <a href="/project"
-        style="background-color: rgb(35, 165, 216); padding: 10px 20px; color: white; text-decoration: none">Add
-        Blog</a>
-    </div>
-    <div id="contents"
-      class="rounded-5 border border-4 border-primary-subtle mt-lg-5 d-flex flex-wrap justify-content-around">
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {{range .Blogs}}
-      <div class="card border-primary mb-3 mt-lg-5" style="max-width: 20rem;">
-        <div class="card-header img-fluid">
-          <img src="/{{.Image}}" class="card-img-top img-fluid rounded img-thumbnail"
-            style="max-height: 240px; max-width: 280px; object-fit: contain; mix-blend-mode: color-burn;" />
+      <article class="glass-panel rounded-2xl overflow-hidden flex flex-col border border-white/10 group glass-panel-hover">
+        <div class="relative aspect-video w-full overflow-hidden bg-zinc-900 border-b border-white/5">
+          <img src="/{{.Image}}" alt="{{.Title}}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='/assets/404.jpg'" />
+          <div class="absolute top-3 right-3 flex gap-1.5">
+            <span class="badge-tech !bg-zinc-950/80 !backdrop-blur-md !border-white/10 !text-[11px] !py-1 !px-2.5">
+              <i class="ph ph-clock text-emerald-400"></i> {{.Duration}}
+            </span>
+          </div>
         </div>
-        <div class="card-body">
-          <div class="card-title text-black d-flex justify-content-center">
-          </div>
-          <h3 class="text-black d-flex justify-content-center">
-            <a href="/blog-detail/{{.ID}}" target="_blank">{{.Title}}</a>
-          </h3>
-          <div class="card-title text-black-50 d-flex justify-content-center">
-            Duration: {{.Duration}}| {{.Author}}
-          </div>
-          <p>
-            {{.Content}}
-          </p>
-          <div class="d-flex" style="width: 25px; height: 25px; opacity: 75%;">
-            {{ if .NodeJs }}<img style="margin-left: 15px;" src="/assets/minilogo/nodejs.png">{{ end }}
-            {{ if .ReactJs }}<img style="margin-left: 15px;" src="/assets/minilogo/reactjs.png">{{ end }}
-            {{ if .NextJs }}<img style="margin-left: 15px;" src="/assets/minilogo/nextjs.png">{{ end }}
-            {{ if .TypeScript }}<img style="margin-left: 15px;" src="/assets/minilogo/typescr.png">{{ end }}
-          </div>
-          {{ if $.Logged }}
-          <div class="card-body d-flex justify-content-lg-evenly" style="margin-bottom: auto;">
-            <form action="/delete-blog/{{.ID}}" method="post">
-              <button class="card-link btn btn-secondary" formaction="/delete-blog/{{.ID}}">Delete Blog</button>
-            </form>
-            <form>
-              <button class="card-link btn btn-secondary" formaction="/edit-blog/{{.ID}}">Edit Post</button>
-            </form>
-          </div>
-          {{ else }}
 
-          {{ end }}
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-xs font-mono text-zinc-500 mb-2">
+              <i class="ph ph-user text-zinc-400"></i> {{.Author}}
+            </div>
+            <h3 class="text-lg font-bold text-zinc-100 group-hover:text-emerald-400 transition-colors line-clamp-1">
+              <a href="/blog-detail/{{.ID}}">{{.Title}}</a>
+            </h3>
+            <p class="text-zinc-400 text-xs leading-relaxed mt-2 line-clamp-3">
+              {{.Content}}
+            </p>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-white/5 flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              {{ if .NodeJs }}<span class="w-6 h-6 rounded-md bg-white/5 flex items-center justify-center"><img src="/assets/minilogo/nodejs.png" class="w-3.5 h-3.5" /></span>{{ end }}
+              {{ if .ReactJs }}<span class="w-6 h-6 rounded-md bg-white/5 flex items-center justify-center"><img src="/assets/minilogo/reactjs.png" class="w-3.5 h-3.5" /></span>{{ end }}
+              {{ if .NextJs }}<span class="w-6 h-6 rounded-md bg-white/5 flex items-center justify-center"><img src="/assets/minilogo/nextjs.png" class="w-3.5 h-3.5" /></span>{{ end }}
+              {{ if .TypeScript }}<span class="w-6 h-6 rounded-md bg-white/5 flex items-center justify-center"><img src="/assets/minilogo/typescr.png" class="w-3.5 h-3.5" /></span>{{ end }}
+            </div>
+
+            <div class="flex items-center gap-3">
+              <a href="/edit-blog/{{.ID}}" class="text-xs text-zinc-400 hover:text-zinc-200" title="Edit">
+                <i class="ph ph-pencil-simple text-sm"></i>
+              </a>
+              <form action="/delete-blog/{{.ID}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this project?');" class="inline">
+                <button type="submit" class="text-xs text-red-400 hover:text-red-300" title="Delete">
+                  <i class="ph ph-trash text-sm"></i>
+                </button>
+              </form>
+              <a href="/blog-detail/{{.ID}}" class="btn-primary text-xs !py-1 !px-3 !rounded-md">
+                Detail
+              </a>
+            </div>
+          </div>
         </div>
+      </article>
+      {{else}}
+      <div class="col-span-full glass-panel rounded-2xl p-12 text-center">
+        <i class="ph ph-folder-open text-4xl text-zinc-600 mb-3"></i>
+        <p class="text-zinc-400 text-sm">No projects found in database.</p>
+        <a href="/project" class="btn-primary mt-4 text-xs !py-2 !px-4">Create First Project</a>
       </div>
-      {{ end }}
+      {{end}}
     </div>
-  </div>
-  <script src="https://kit.fontawesome.com/f9ec9fdc7c.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-    crossorigin="anonymous"></script>
-</body>
+  </main>
 
+  <footer class="border-t border-white/5 py-12 text-center text-xs text-zinc-500">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span class="font-semibold text-zinc-300">B48 Personal Web</span>
+      </div>
+      <p>© 2026 Wahyu Febri Tamtomo. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
 </html>

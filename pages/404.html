@@ -1,24 +1,60 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="en" class="dark">
 <head>
-    <link rel="icon" type="image/x-icon" href="/assets/banteng.png" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>404 - Page Not Found</title>
-    <link rel="stylesheet" type="text/css" href="/css/404.css" />
-    <link href="/assets/banteng.png" rel="shortcut icon" type="image/x-icon" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found</title>
+  <link rel="icon" type="image/x-icon" href="/assets/dp.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#09090b',
+            surface: '#121215',
+            'surface-elevated': '#18181b',
+            emerald: {
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/css/modern.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
+<body class="bg-canvas text-zinc-100 selection:bg-emerald-500/20 selection:text-emerald-300 min-h-screen flex items-center justify-center p-6 relative">
 
-<body>
-    <div class="container">
-        <img class="oops" src="/assets/404.svg" />
-        <br />
-        <h3>The page you are looking for was not found
-            <br /> It could be because the url is incorrect or not available.</h3>
-        <br />
-        <a class="button" href="/">Back to Homepage</a>
+  <div class="ambient-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+  <div class="glass-panel rounded-3xl p-8 sm:p-12 w-full max-w-lg border border-white/10 shadow-2xl relative z-10 text-center">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-mono mb-6">
+      <i class="ph ph-warning-circle"></i> HTTP 404 Error
     </div>
-</body>
 
+    <h1 class="text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 tracking-tighter mb-4 font-mono">
+      404
+    </h1>
+
+    <h2 class="text-xl font-bold text-zinc-100 mb-2">Resource Not Found</h2>
+    <p class="text-zinc-400 text-xs leading-relaxed mb-8 max-w-sm mx-auto">
+      The page or route you are looking for does not exist or has been relocated to another path.
+    </p>
+
+    <div class="flex justify-center gap-4">
+      <a href="/" class="btn-primary text-xs !py-2.5 !px-5">
+        <i class="ph ph-house text-sm"></i> Return to Homepage
+      </a>
+      <a href="/blogs" class="btn-secondary text-xs !py-2.5 !px-5">
+        <i class="ph ph-compass text-sm"></i> Browse Projects
+      </a>
+    </div>
+  </div>
+
+</body>
 </html>
