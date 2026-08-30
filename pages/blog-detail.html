@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ .Blog.Title }} </title>
-    <link rel="icon" type="image/x-icon" href="assets/banteng.png" />
+    <link rel="icon" type="image/x-icon" href="/assets/banteng.png" />
     <link rel="stylesheet" href="/css/all.css" />
     <link rel="stylesheet" href="/css/nav.css" />
     <link rel="stylesheet" href="/css/contact.css" />
@@ -19,9 +19,9 @@
         <ul>
             <li><img src="/assets/banteng.png" /></li>
             <li class="collapse"><a href="/">Home</a></li>
-            <li class="collapse"><a href="../blogs">Blog</a></li>
-            <li class="collapse"><a href="../project" style="font-size: small;">My Project</a></li>
-            <li class="collapse"><a href="../testimonial">Testimonials</a></li>
+            <li class="collapse"><a href="/blogs">Blog</a></li>
+            <li class="collapse"><a href="/project" style="font-size: small;">My Project</a></li>
+            <li class="collapse"><a href="/testimonial">Testimonials</a></li>
         </ul>
         <div class="nav-right" id="hamburg-btn">
             <button class="switch tombol" onclick="openHamburg()">
@@ -35,24 +35,24 @@
                 <input type="checkbox" class="input" onclick="toggleNightMode()">
                 <span class="slider"></span>
               </label>
-            <a href="contact" class="tombol collapse" style="margin-bottom: 0.5%;">
+            <a href="/contact" class="tombol collapse" style="margin-bottom: 0.5%;">
                 Contact Me
             </a>
         </div>
     </nav>
     <div class="hamburg-container" id="hamburg-container">
       <a href="/" class="tombol">Home</a>
-      <a href="../blogs" class="tombol">Blog</a>
-      <a href="../project" class="tombol">My Project</a>
-      <a href="../contact" class="tombol">Contact</a>
-      <a href="../testimonial" class="tombol">Testimonials</a>
+      <a href="/blogs" class="tombol">Blog</a>
+      <a href="/project" class="tombol">My Project</a>
+      <a href="/contact" class="tombol">Contact</a>
+      <a href="/testimonial" class="tombol">Testimonials</a>
     </div>
     <article>
     <div class="awalpost">
       <h1>{{ .Blog.Title }}</h1>
     </div>  
     <div class="awalpost1">
-    <img class="imagedummy" src="../{{.Blog.Image}}" style="mix-blend-mode: color-burn;" />
+    <img class="imagedummy" src="/{{.Blog.Image}}" style="mix-blend-mode: color-burn;" />
     <div class="detail-p" style="opacity: 80%;"><h4>Author: {{ .Blog.Author }}</h4>
     <div class="detail-p" style="margin-top: 3%;"><h2>Duration</h2>
       <br>
