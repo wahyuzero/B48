@@ -123,12 +123,28 @@ psql -U postgres -d postgres -f schema.sql
 
 ---
 
+## 🧪 Pengujian Otomatis (Unit & E2E Testing)
+
+Project ini dilengkapi dengan test suite lengkap:
+
+- **Unit & Handler Tests**:
+  ```bash
+  go test -v ./...
+  ```
+- **Live End-to-End Test (Auth, CRUD, File Upload)**:
+  ```bash
+  # Jalankan server di terminal 1:
+  go run main.go
+  # Jalankan E2E script di terminal 2:
+  python3 e2e_test.py
+  ```
+
+---
+
 ## 🎯 Revival Roadmap: Rencana Pengembangan Lanjutan
 
-Bagi kamu yang ingin melanjutkan project ini ke tahap selanjutnya:
-
-- [ ] **Level 1: Dynamic File Upload (Multipart Form)**
-  - Mengganti hardcoded image cover `"assets/404.jpg"` dengan upload file gambar langsung dari form (`c.FormFile("image")`) ke folder `uploads/`.
+- [x] **Level 1: Dynamic File Upload (Multipart Form)** *(Selesai!)*
+  - Dukungan upload file gambar langsung dari form (`c.FormFile("image")`) ke folder `uploads/` dengan timestamp hashing.
 - [ ] **Level 2: User-Post Relation (Foreign Key) & Middleware Auth**
   - Menambahkan relasi `author_id INT REFERENCES db_user(id)`.
   - Mengunci route create/edit/delete dengan Middleware agar hanya user terotentikasi yang dapat mengelola postingannya sendiri.

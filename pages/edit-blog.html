@@ -53,7 +53,7 @@
     <!-- <h4 style="opacity: 50%; color: red;">This function is on progress</h4> -->
     <div class="container mt-5">
       <h2>Edit Blog</h2>
-      <form action="/update-blog/{{.blog.ID}}" method="post" autocomplete="off">
+      <form action="/update-blog/{{.blog.ID}}" method="post" enctype="multipart/form-data" autocomplete="off">
         <input name="id" value="{{.blog.ID}}" type="hidden">
         <div class="mb-3">
           <label for="projectName" class="form-label">Title</label>
@@ -238,11 +238,11 @@
           </div>
           <div class="mt-3 mb-1">
             Upload Your Files
-            <p><img src="{{ .blog.Image }}" style="width: 20%; height: 20%;" /></p>
+            <p><img src="/{{ .blog.Image }}" style="width: 20%; height: 20%;" /></p>
           </div>
           <div class="input-group mb-3 mt-3">
-            <input type="file" accept="image/*" class="form-control" id="file-input">
-            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+            <input type="file" accept="image/*" class="form-control" id="image" name="image">
+            <label class="input-group-text" for="image">Upload</label>
           </div>
           <button type="submit" class="btn btn-primary">Update</button>
       </form>

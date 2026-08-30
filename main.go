@@ -4,7 +4,10 @@ import (
 	"context"
 	"fmt"
 	"html/template"
+	"io"
 	"net/http"
+	"os"
+	"path/filepath"
 	"personal-web/connection"
 	"strconv"
 	"strings"
@@ -53,7 +56,9 @@ var dataBlogs = []Blog{}
 
 func main() {
 	e := echo.New()
+	_ = os.MkdirAll("uploads", 0755)
 	e.Static("/assets", "assets")
+	e.Static("/uploads", "uploads")
 	e.Static("/css", "css")
 	e.Static("/script", "script")
 
@@ -290,26 +295,43 @@ func addBlog(c echo.Context) error {
 
 	duration := countDate(tstart, tend)
 
-	fmt.Println("projectName", title)
-	fmt.Println("startDate", startDate)
-	fmt.Println("endDate", endDate)
-	fmt.Println("konten", content)
-	fmt.Println(duration)
-	fmt.Println("nodeJs", nodeJs)
-	fmt.Println("reactJs", reactJs)
-	fmt.Println("nextJs", nextJs)
-	fmt.Println("typeScript", typeScript)
+	// Determine Author from session if logged in
+	sess, _ := session.Get("session", c)
+	author := "Wahyu Zero"
+	if sess != nil && sess.Values["username"] != nil {
+		author = sess.Values["username"].(string)
+	}
+
+	// Handle Image File Upload
+	imagePath := "assets/404.jpg"
+	file, errFile := c.FormFile("image")
+	if errFile == nil {
+		src, err := file.Open()
+		if err == nil {
+			defer src.Close()
+			_ = os.MkdirAll("uploads", 0755)
+			filename := fmt.Sprintf("%d-%s", time.Now().UnixNano(), file.Filename)
+			dstPath := filepath.Join("uploads", filename)
+			dst, err := os.Create(dstPath)
+			if err == nil {
+				defer dst.Close()
+				if _, err = io.Copy(dst, src); err == nil {
+					imagePath = "uploads/" + filename
+				}
+			}
+		}
+	}
 
 	added, err := connection.Conn.Exec(context.Background(), `
 		INSERT INTO public.db_posts (
 			title, content, author, start_post, end_post, image, duration, nodejs, reactjs, nextjs, typescript
 		) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
-	`, title, content, "Wahyu Zero", tstart, tend, "assets/404.jpg", duration, nodeJs, reactJs, nextJs, typeScript)
+	`, title, content, author, tstart, tend, imagePath, duration, nodeJs, reactJs, nextJs, typeScript)
 
-	fmt.Println(added)
+	fmt.Println("New post added:", added)
 
 	if err != nil {
-		fmt.Println("Can't add row")
+		fmt.Println("Can't add row:", err.Error())
 		return c.JSON(http.StatusInternalServerError, "Error adding row")
 	}
 
@@ -364,7 +386,6 @@ func editBlog(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, errSess.Error())
 	}
 	data := map[string]interface{}{
-		// "id":   id,
 		"blog":   blog,
 		"Logged": userLogged,
 	}
@@ -387,14 +408,6 @@ func updateBlog(c echo.Context) error {
 	reactJs := c.FormValue("reactJs") != ""
 	nextJs := c.FormValue("nextJs") != ""
 	typeScript := c.FormValue("typeScript") != ""
-	// Image := "assets/404.jpg"
-
-	fmt.Println("startDate", startDate)
-	fmt.Println("endDate", endDate)
-	fmt.Println("nodeJs", nodeJs)
-	fmt.Println("reactJs", reactJs)
-	fmt.Println("nextJs", nextJs)
-	fmt.Println("typeScript", typeScript)
 
 	tstart, err := time.Parse("2006-01-02", startDate)
 	if err != nil {
@@ -407,6 +420,26 @@ func updateBlog(c echo.Context) error {
 	}
 
 	duration := countDate(tstart, tend)
+
+	// Handle optional image upload on edit
+	file, errFile := c.FormFile("image")
+	if errFile == nil {
+		src, err := file.Open()
+		if err == nil {
+			defer src.Close()
+			_ = os.MkdirAll("uploads", 0755)
+			filename := fmt.Sprintf("%d-%s", time.Now().UnixNano(), file.Filename)
+			dstPath := filepath.Join("uploads", filename)
+			dst, err := os.Create(dstPath)
+			if err == nil {
+				defer dst.Close()
+				if _, err = io.Copy(dst, src); err == nil {
+					newImagePath := "uploads/" + filename
+					_, _ = connection.Conn.Exec(context.Background(), `UPDATE public.db_posts SET image=$1 WHERE id=$2`, newImagePath, id)
+				}
+			}
+		}
+	}
 
 	_, err = connection.Conn.Exec(context.Background(), `
     UPDATE public.db_posts SET title=$2, content=$3, start_post=$4, end_post=$5, duration=$6, nodejs=$7, reactjs=$8, nextjs=$9, typescript=$10
